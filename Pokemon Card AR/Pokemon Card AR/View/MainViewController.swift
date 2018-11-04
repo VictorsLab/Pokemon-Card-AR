@@ -12,12 +12,13 @@ import UIKit
 class MainViewController: UIViewController {
     
     var pokemons: [Pokemon] = PokemonFactory.getAllModels()
-    let numberOfCellsPerRow: CGFloat = 4
+    let numberOfCellsPerRow: CGFloat = 2
     
     @IBOutlet weak var cardsCollectionView: UICollectionView!
     
-    override func viewDidLoad() {
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func present3dModel(_ pokemon: Pokemon) {
@@ -47,7 +48,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellWidth = (collectionView.frame.size.width-10)/2
+        let cellWidth = (collectionView.frame.size.width-10)/numberOfCellsPerRow
         let cellHeight = cellWidth*1.333
         return CGSize(width: cellWidth, height: cellHeight)
     }

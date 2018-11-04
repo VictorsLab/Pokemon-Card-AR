@@ -13,33 +13,37 @@ import ARKit
 class Present3dModelViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    var pokemon3dAssetName: String! {
-        didSet {
-            print("assetName: \(pokemon3dAssetName!)")
-        }
-    }
+    var pokemon3dAssetName: String!
+    var alreadyAddedModel = false
+    
+    var planes = [UUID:Plane]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+//        self.sceneView.debugOptions = SCNDebugOptions(rawValue: ARSCNDebugOptions.showWorldOrigin.rawValue | ARSCNDebugOptions.showFeaturePoints.rawValue)
+//        sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene()
         
         // Set the scene to the view
         sceneView.scene = scene
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -52,6 +56,19 @@ class Present3dModelViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
+    @IBAction func handleSceneTap(_ sender: UITapGestureRecognizer) {
+        
+        guard let hitTestResult = sceneView
+            .hitTest(sender.location(in: sceneView), types: [.existingPlaneUsingGeometry, .estimatedHorizontalPlane])
+            .first
+            else { return }
+        
+        // Place an anchor for a virtual character. The model appears in renderer(_:didAdd:for:).
+        let anchor = ARAnchor(name: pokemon3dAssetName, transform: hitTestResult.worldTransform)
+        sceneView.session.add(anchor: anchor)
+    }
+    
+    
     // MARK: - ARSCNViewDelegate
     
 /*
@@ -62,6 +79,39 @@ class Present3dModelViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
 */
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
+        if alreadyAddedModel {
+            return
+        }
+        
+        if let planeAnchor = anchor as? ARPlaneAnchor {
+            let plane = Plane(anchor: planeAnchor)
+            self.planes[anchor.identifier] = plane
+            node.addChildNode(plane)
+            
+        } else if anchor.name == pokemon3dAssetName! {
+            let sceneURL = Bundle.main.url(forResource: pokemon3dAssetName!, withExtension: "scn", subdirectory: "art.scnassets")!
+            let referenceNode = SCNReferenceNode(url: sceneURL)!
+            referenceNode.load()
+            node.addChildNode(referenceNode)
+            alreadyAddedModel = true
+            
+            self.planes.values.forEach {
+                $0.isHidden = true
+            }
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        
+        guard let planeAnchor = anchor as? ARPlaneAnchor, let plane = self.planes[anchor.identifier] else {
+            return
+        }
+    
+        plane.update(planeAnchor)
+    }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

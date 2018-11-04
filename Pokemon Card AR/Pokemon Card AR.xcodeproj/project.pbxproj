@@ -17,6 +17,7 @@
 		EE89403C218CF1A9009CB6A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89403B218CF1A9009CB6A4 /* Assets.xcassets */; };
 		EE89403F218CF1A9009CB6A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89403D218CF1A9009CB6A4 /* LaunchScreen.storyboard */; };
 		EE894047218CF28D009CB6A4 /* PokemonCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE894046218CF28D009CB6A4 /* PokemonCardCell.swift */; };
+		EEB4CAF4218E8BCD001AD409 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4CAF3218E8BCD001AD409 /* Plane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EE89403E218CF1A9009CB6A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE894040218CF1A9009CB6A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE894046218CF28D009CB6A4 /* PokemonCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardCell.swift; sourceTree = "<group>"; };
+		EEB4CAF3218E8BCD001AD409 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				EE894036218CF1A7009CB6A4 /* Present3dModelViewController.swift */,
+				EEB4CAF3218E8BCD001AD409 /* Plane.swift */,
 			);
 			path = ARView;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				EE894033218CF1A7009CB6A4 /* AppDelegate.swift in Sources */,
 				EE5BE32F218CF7C2002A36EA /* PokemonFactory.swift in Sources */,
 				EE5BE32A218CF489002A36EA /* MainViewController.swift in Sources */,
+				EEB4CAF4218E8BCD001AD409 /* Plane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

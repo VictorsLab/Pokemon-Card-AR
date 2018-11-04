@@ -1,0 +1,36 @@
+newmtl Material__160
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd pikachu_body.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 2.00
+newmtl Material__162
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd pikachu_face.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 2.00
+newmtl Material__164
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd pikachu_mouth.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 2.00
+newmtl Material__166
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd pikachu_eye.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 2.00

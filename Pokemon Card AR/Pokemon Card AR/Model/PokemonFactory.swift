@@ -16,15 +16,13 @@ import UIKit
 enum PokemonFactory: String, CaseIterable {
     case Pikachu
     case Squirtle
-    case Charmander
     case Bulbasaur
+    case Blastoise
     case Charizard
-    case Caterpiee
-    case Butterfree
-    case Weedle
+    case Venusaur
     
     func model() -> Pokemon {
-        guard let photo = UIImage(named: self.rawValue) else {
+        guard let photo = UIImage(named: "Profile/\(self.rawValue)") else {
             print("[Error]: \(self.rawValue) has no image")
             return Pokemon.init(name: self.rawValue, photo: UIImage(), assetFileName: self.rawValue)
         }
