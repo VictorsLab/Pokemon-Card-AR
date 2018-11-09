@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE36C19C219150D300BF4D44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE36C19B219150D300BF4D44 /* Assets.xcassets */; };
 		EE5BE32A218CF489002A36EA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BE329218CF489002A36EA /* MainViewController.swift */; };
 		EE5BE32C218CF706002A36EA /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BE32B218CF706002A36EA /* Pokemon.swift */; };
 		EE5BE32F218CF7C2002A36EA /* PokemonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BE32E218CF7C2002A36EA /* PokemonFactory.swift */; };
@@ -14,7 +15,6 @@
 		EE894035218CF1A7009CB6A4 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = EE894034218CF1A7009CB6A4 /* art.scnassets */; };
 		EE894037218CF1A7009CB6A4 /* Present3dModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE894036218CF1A7009CB6A4 /* Present3dModelViewController.swift */; };
 		EE89403A218CF1A7009CB6A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE894038218CF1A7009CB6A4 /* Main.storyboard */; };
-		EE89403C218CF1A9009CB6A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89403B218CF1A9009CB6A4 /* Assets.xcassets */; };
 		EE89403F218CF1A9009CB6A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89403D218CF1A9009CB6A4 /* LaunchScreen.storyboard */; };
 		EE894047218CF28D009CB6A4 /* PokemonCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE894046218CF28D009CB6A4 /* PokemonCardCell.swift */; };
 		EEB4CAF4218E8BCD001AD409 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4CAF3218E8BCD001AD409 /* Plane.swift */; };
@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE36C19B219150D300BF4D44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE5BE329218CF489002A36EA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE5BE32B218CF706002A36EA /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		EE5BE32E218CF7C2002A36EA /* PokemonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonFactory.swift; sourceTree = "<group>"; };
@@ -30,7 +31,6 @@
 		EE894034218CF1A7009CB6A4 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		EE894036218CF1A7009CB6A4 /* Present3dModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Present3dModelViewController.swift; sourceTree = "<group>"; };
 		EE894039218CF1A7009CB6A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EE89403B218CF1A9009CB6A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE89403E218CF1A9009CB6A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE894040218CF1A9009CB6A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE894046218CF28D009CB6A4 /* PokemonCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardCell.swift; sourceTree = "<group>"; };
@@ -61,9 +61,9 @@
 		EE5BE334218DF581002A36EA /* ARView */ = {
 			isa = PBXGroup;
 			children = (
+				EEB4CAF5218F0906001AD409 /* ARGameViewController.swift */,
 				EE894036218CF1A7009CB6A4 /* Present3dModelViewController.swift */,
 				EEB4CAF3218E8BCD001AD409 /* Plane.swift */,
-				EEB4CAF5218F0906001AD409 /* ARGameViewController.swift */,
 			);
 			path = ARView;
 			sourceTree = "<group>";
@@ -119,8 +119,8 @@
 		EE894049218CF2B8009CB6A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE36C19B219150D300BF4D44 /* Assets.xcassets */,
 				EE894034218CF1A7009CB6A4 /* art.scnassets */,
-				EE89403B218CF1A9009CB6A4 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 			files = (
 				EE894035218CF1A7009CB6A4 /* art.scnassets in Resources */,
 				EE89403F218CF1A9009CB6A4 /* LaunchScreen.storyboard in Resources */,
-				EE89403C218CF1A9009CB6A4 /* Assets.xcassets in Resources */,
+				EE36C19C219150D300BF4D44 /* Assets.xcassets in Resources */,
 				EE89403A218CF1A7009CB6A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

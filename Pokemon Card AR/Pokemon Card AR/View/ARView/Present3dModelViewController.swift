@@ -44,6 +44,7 @@ class Present3dModelViewController: UIViewController, ARSCNViewDelegate {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
+        configuration.environmentTexturing = .automatic
 
         // Run the view's session
         sceneView.session.run(configuration)

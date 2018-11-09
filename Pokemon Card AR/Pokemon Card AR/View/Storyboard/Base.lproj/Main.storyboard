@@ -20,6 +20,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tf-hi-sF7">
                                 <rect key="frame" x="57" y="617" width="261" height="30"/>
                                 <state key="normal" title="AR Game"/>
+                                <connections>
+                                    <segue destination="Kxm-nC-MaV" kind="show" id="yk6-Gp-8Pi"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E0b-C5-q32">
                                 <rect key="frame" x="10" y="74" width="355" height="533"/>
@@ -94,6 +97,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87h-Er-kii" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="933.60000000000002" y="137.18140929535232"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="lUF-fm-9Z3">
+            <objects>
+                <viewController id="Kxm-nC-MaV" customClass="ARGameViewController" customModule="Pokemon_Card_AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Urb-y8-iPm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f08-1L-ZMI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f08-1L-ZMI" firstAttribute="leading" secondItem="kWw-bG-e1J" secondAttribute="leading" id="A0j-OD-Px8"/>
+                            <constraint firstItem="kWw-bG-e1J" firstAttribute="bottom" secondItem="f08-1L-ZMI" secondAttribute="bottom" id="BjN-4p-7Gw"/>
+                            <constraint firstItem="kWw-bG-e1J" firstAttribute="trailing" secondItem="f08-1L-ZMI" secondAttribute="trailing" id="VUs-re-gIn"/>
+                            <constraint firstItem="f08-1L-ZMI" firstAttribute="top" secondItem="kWw-bG-e1J" secondAttribute="top" id="wKq-ic-ftp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kWw-bG-e1J"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="f08-1L-ZMI" id="P6O-Oa-15P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t26-xP-rgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1472.8" y="919.79010494752629"/>
         </scene>
         <!--Present 3d Model View Controller-->
         <scene sceneID="tXr-a1-R10">

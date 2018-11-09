@@ -40,8 +40,9 @@ class ARGameViewController: UIViewController, ARSCNViewDelegate {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
+        let configuration = ARImageTrackingConfiguration()
         configuration.trackingImages = referenceImages!
+        configuration.maximumNumberOfTrackedImages = 6
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -56,14 +57,32 @@ class ARGameViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - ARSCNViewDelegate
     
-    /*
-     // Override to create and configure nodes for anchors added to the view's session.
-     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
-     
-     return node
-     }
-     */
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        let node = SCNNode()
+        if let imageAnchor = anchor as? ARImageAnchor, let pokemon3dAssetName =
+            imageAnchor.referenceImage.name {
+
+            
+            let sceneURL = Bundle.main.url(forResource: pokemon3dAssetName, withExtension: "scn", subdirectory: "art.scnassets")!
+            let referenceNode = SCNReferenceNode(url: sceneURL)!
+            referenceNode.load()
+            referenceNode.scale = SCNVector3(x: 0.2, y: 0.2, z: 0.2)
+            node.addChildNode(referenceNode)
+            
+//            self.planes.values.forEach {
+//                $0.isHidden = true
+//            }
+            
+//            let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
+//            plane.firstMaterial?.diffuse.contents = UIColor.blue
+//
+//            let planeNode = SCNNode(geometry: plane)
+//            planeNode.eulerAngles.x = -.pi / 2
+//
+//            node.addChildNode(planeNode)
+        }
+        return node
+    }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 //        if let planeAnchor = anchor as? ARPlaneAnchor {
