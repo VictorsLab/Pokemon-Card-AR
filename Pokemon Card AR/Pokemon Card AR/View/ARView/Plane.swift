@@ -61,10 +61,6 @@ class Plane: SCNNode {
         let width = self.planeGeometry.width
         let height = self.planeGeometry.height
     
-        // As the width/height of the plane updates, we want our grid material to
-        // cover the entire plane, repeating the texture over and over. Also if the
-        // grid is less than 1 unit, we don't want to squash the texture to fit, so
-        // scaling updates the texture co-ordinates to crop the texture in that case
         guard let material = self.planeGeometry.materials.first else {
             return
         }

@@ -18,17 +18,10 @@ class ARGameViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         sceneView.delegate = self
-        
-        //        self.sceneView.debugOptions = SCNDebugOptions(rawValue: ARSCNDebugOptions.showWorldOrigin.rawValue | ARSCNDebugOptions.showFeaturePoints.rawValue)
-        //        sceneView.showsStatistics = true
-        
-        // Create a new scene
         let scene = SCNScene()
-        
-        // Set the scene to the view
         sceneView.scene = scene
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,62 +61,28 @@ class ARGameViewController: UIViewController, ARSCNViewDelegate {
             referenceNode.load()
             referenceNode.scale = SCNVector3(x: 0.2, y: 0.2, z: 0.2)
             node.addChildNode(referenceNode)
-            
-//            self.planes.values.forEach {
-//                $0.isHidden = true
-//            }
-            
-//            let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
-//            plane.firstMaterial?.diffuse.contents = UIColor.blue
-//
-//            let planeNode = SCNNode(geometry: plane)
-//            planeNode.eulerAngles.x = -.pi / 2
-//
-//            node.addChildNode(planeNode)
         }
         return node
     }
     
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-//        if let planeAnchor = anchor as? ARPlaneAnchor {
-//            let plane = Plane(anchor: planeAnchor)
-//            self.planes[anchor.identifier] = plane
-//            node.addChildNode(plane)
-//
-//        } else if anchor.name == pokemon3dAssetName! {
-//            let sceneURL = Bundle.main.url(forResource: pokemon3dAssetName!, withExtension: "scn", subdirectory: "art.scnassets")!
-//            let referenceNode = SCNReferenceNode(url: sceneURL)!
-//            referenceNode.load()
-//            node.addChildNode(referenceNode)
-//            alreadyAddedModel = true
-//
-//            self.planes.values.forEach {
-//                $0.isHidden = true
-//            }
-//        }
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        
-//        guard let planeAnchor = anchor as? ARPlaneAnchor, let plane = self.planes[anchor.identifier] else {
-//            return
-//        }
-//
-//        plane.update(planeAnchor)
-    }
-    
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
+        session.getCurrentWorldMap { (worldMap, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let worldMap = worldMap else {
+                print("[ARGameViewController] Error: Could not find a world map")
+                return
+            }
+            worldMap.anchors.removeAll()
+        }
         
     }
 }
